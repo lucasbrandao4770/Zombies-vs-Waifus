@@ -4,14 +4,16 @@ import os
 
 class Game:
     def __init__(self) -> None:
-        self.width = 1000
-        self.height = 700
+        self.scaling_factor = 0.5
+        self.width = 1920*self.scaling_factor
+        self.height = 1080*self.scaling_factor
         self.win = pygame.display.set_mode((self.width, self.height))
         self.enemies = []
         self.towers = []
         self.lives = 10
         self.money = 100
         self.bg = pygame.image.load(os.path.join("game_assets", "bg.png"))
+        self.bg = pygame.transform.scale(self.bg , (self.width, self.height))
         self.clicks = [] # remove
 
     def run(self):
@@ -40,4 +42,4 @@ class Game:
 
 if __name__ == "__main__":
     game = Game()
-    g.run()
+    game.run()
