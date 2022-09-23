@@ -1,6 +1,6 @@
 import pygame
 import os
-
+from enemies import *
 
 class Game:
     def __init__(self) -> None:
@@ -33,6 +33,10 @@ class Game:
 
     def draw(self):
         self.win.blit(self.bg, (0,0))
+
+        # draw enemies
+        for en in self.enemies:
+            en.draw(self.win)
         pygame.display.update()
 
 if __name__ == "__main__":
